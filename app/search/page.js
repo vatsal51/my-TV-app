@@ -59,6 +59,7 @@ const Search = () => {
                 first_air_date,
                 release_date,
                 media_type,
+                vote_average,
                 id,
               } = Val;
               return (
@@ -75,7 +76,7 @@ const Search = () => {
                       />
                       <div className="card-body">
                         <h5 className="card-title text-center fs-5">
-                          {title || name}
+                          {title || name} / { parseFloat(vote_average).toFixed(1)} <i class="bi bi-star-fill"></i>
                         </h5>
                         <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
                           <div>{media_type === "tv" ? "TV" : "Movie"}</div>

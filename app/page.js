@@ -8,9 +8,9 @@ import Footer from './Footer';
 import Trending from './Trending';
 import { useEffect } from 'react';
 export default function Home() {
-  useEffect(()=>{
-    import("bootstrap/dist/js/bootstrap");
-  },[])
+  // useEffect(()=>{
+  //   import("bootstrap/dist/js/bootstrap");
+  // },[])
   return (
     <>
     {/* <BrowserRouter> */}
