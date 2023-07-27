@@ -8,14 +8,19 @@ import Genre from "../Genre";
 import useGenre from "../useGenre";
 import Header from "../Header";
 import Footer from "../Footer";
+import Link from "next/link";
+
 const TV = () => {
     // useEffect(()=>{
     //     import("bootstrap/dist/js/bootstrap");
     //   },[])
+    // const [season,setSeason] = useState([])
+
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
   const [genre, setGenre] = useState([]);
   const [value, setValue] = useState([]);
+  // const [season, setSeason] = useState([])
   const genreURL = useGenre(value);
 
   const fetchTrending = async () => {
@@ -24,6 +29,7 @@ const TV = () => {
     // https://api.themoviedb.org/3/discover/tv?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
     const dataJ = await data.json();
     setState(dataJ.results);
+    console.log(dataJ)
   };
   useEffect(() => {
     fetchTrending();
@@ -53,11 +59,18 @@ const TV = () => {
               first_air_date,
               release_date,
               media_type,
+              vote_average,
               id,
             } = Val;
+        
             return (
               <>
-                <div className="col-md-3 col-sm-4 py-3" id="card" key={id}>
+                  <Link  href={{
+            pathname: '/'+[Val.id], 
+            // query: { seriesId: Val.id },
+          }}
+                   id={Val.id} key={Val.id}  className="col-md-3 col-sm-4 py-3">
+                <div  id="card" key={id}>
                   <div className="card bg-dark" key={id}>
                     <img
                       src={
@@ -68,7 +81,8 @@ const TV = () => {
                     />
                     <div className="card-body">
                       <h5 className="card-title text-center fs-5">
-                        {title || name}
+                        {title || name} / {vote_average} <i class="bi bi-star-fill"></i> 
+                       
                       </h5>
                       <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
                         <div>{media_type === "movie" ? "Movie" : "TV"}</div>
@@ -77,6 +91,7 @@ const TV = () => {
                     </div>
                   </div>
                 </div>
+                </Link>
               </>
             );
           })}

@@ -37,10 +37,10 @@ const Footer = () => {
               
               return (
                 <>
-                  <Link href={`${Val.link}`} key={Val.id}>
+                  <Link href={`${Val.link}`} prefetch={false} key={Val.id}>
                     <button
                       className="col-sm-2 col-md-2 btn btn-dark"
-                      key={Val.id}
+                  
                     >
                       <i className={`${Val.icon}`} id="fire"></i>
                       <br />
