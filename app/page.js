@@ -13,19 +13,9 @@ export default function Home() {
   // },[])
   return (
     <>
-    {/* <BrowserRouter> */}
       <Header />
-      <Trending />
-            {/* <Routes>
-        <Route path="/" element={<Trending />} exact />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/tv" element={<TV />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="*" element={<Error />} />
-      </Routes> */}
+      <Trending />    
       <Footer />
-    {/* </BrowserRouter> */}
   </>
-
   )
 }

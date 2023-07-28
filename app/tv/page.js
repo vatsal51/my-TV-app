@@ -11,10 +11,6 @@ import Footer from "../Footer";
 import Link from "next/link";
 
 const TV = () => {
-    // useEffect(()=>{
-    //     import("bootstrap/dist/js/bootstrap");
-    //   },[])
-    // const [season,setSeason] = useState([])
 
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
@@ -37,7 +33,7 @@ const TV = () => {
 
   return (
     <>
-    <Header />
+      <Header />
       <div className="container">
         <div className="row py-5 my-5">
           <div className="col-12 text-center mt-2 mb-4 fs-1 fw-bold text-decoration-underline text-white">
@@ -62,35 +58,35 @@ const TV = () => {
               vote_average,
               id,
             } = Val;
-        
+
             return (
               <>
-                  <Link  href={{
-            pathname: '/'+[Val.id], 
-            // query: { seriesId: Val.id },
-          }}
-                   id={Val.id} key={Val.id}  className="col-md-3 col-sm-4 py-3">
-                <div  id="card" key={id}>
-                  <div className="card bg-dark" key={id}>
-                    <img
-                      src={
-                        poster_path ? `${img_300}/${poster_path}` : unavailable
-                      }
-                      className="card-img-top pt-3 pb-0 px-3"
-                      alt={title || name}
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title text-center fs-5">
-                        {title || name} / {vote_average} <i class="bi bi-star-fill"></i> 
-                       
-                      </h5>
-                      <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
-                        <div>{media_type === "movie" ? "Movie" : "TV"}</div>
-                        <div>{first_air_date || release_date}</div>
+                <Link href={{
+                  pathname: '/' + [Val.id],
+                  // query: { seriesId: Val.id },
+                }}
+                  id={Val.id} key={Val.id} className="col-md-3 col-sm-4 py-3">
+                  <div id="card" key={id}>
+                    <div className="card bg-dark" key={id}>
+                      <img
+                        src={
+                          poster_path ? `${img_300}/${poster_path}` : unavailable
+                        }
+                        className="card-img-top pt-3 pb-0 px-3"
+                        alt={title || name}
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title text-center fs-5">
+                          {title || name} / {vote_average} <i class="bi bi-star-fill"></i>
+
+                        </h5>
+                        <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
+                          <div>{media_type === "movie" ? "Movie" : "TV"}</div>
+                          <div>{first_air_date || release_date}</div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
                 </Link>
               </>
             );
