@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'bootstrap/dist/css/bootstrap.css';
 const Footer = () => {
   const data = [
     {
@@ -37,7 +39,7 @@ const Footer = () => {
               
               return (
                 <>
-                  <Link href={`${Val.link}`} prefetch={false} key={Val.id}>
+                  <Link href={`${Val.link}`} prefetch={true} key={Val.id}>
                     <button
                       className="col-sm-2 col-md-2 btn btn-dark"
                   

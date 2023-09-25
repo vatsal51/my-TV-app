@@ -10,7 +10,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import Link from "next/link";
 
-const TV = () => {
+const Movie = () => {
 
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
@@ -21,7 +21,9 @@ const TV = () => {
 
   const fetchTrending = async () => {
     const data = await fetch(`
-    https://api.themoviedb.org/3/discover/tv?api_key=6b99f46cc249aa0e4664f52a5c266bb4&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreURL}`);
+      
+
+https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}`);
     // https://api.themoviedb.org/3/discover/tv?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
     const dataJ = await data.json();
     setState(dataJ.results);
@@ -29,7 +31,7 @@ const TV = () => {
   };
   useEffect(() => {
     fetchTrending();
-  }, [page, genreURL]);
+  }, [page,genreURL ]);
 
   return (
     <>
@@ -37,7 +39,7 @@ const TV = () => {
       <div className="container">
         <div className="row py-5 my-5">
           <div className="col-12 text-center mt-2 mb-4 fs-1 fw-bold text-decoration-underline text-white">
-            TV Series
+            Movies
           </div>
           <Genre
             genre={genre}
@@ -61,7 +63,7 @@ const TV = () => {
 
             return (
               <>
-                <Link href={`/tv/${Val.id}`} as={`/tv/${Val.id}`} key={Val.id}
+                <Link href={`/[id]`} as={`/${Val.id}`} key={Val.id}
                   // query: { seriesId: Val.id },
                
                    className="col-md-3 col-sm-4 py-3">
@@ -98,4 +100,4 @@ const TV = () => {
   );
 };
 
-export default TV;
+export default Movie;
