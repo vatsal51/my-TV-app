@@ -23,7 +23,7 @@ const Movie = () => {
     const data = await fetch(`
       
 
-https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}`);
+https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}&with_genres=${genreURL}`);
     // https://api.themoviedb.org/3/discover/tv?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
     const dataJ = await data.json();
     setState(dataJ.results);
@@ -63,12 +63,12 @@ https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266
 
             return (
               <>
-                <Link href={`/[id]`} as={`/${Val.id}`} key={Val.id}
+                <Link href={`/#`} as={`/#`} onClick={(e)=>e.preventDefault()} key={id}
                   // query: { seriesId: Val.id },
                
                    className="col-md-3 col-sm-4 py-3">
-                  <div id="card" key={id}>
-                    <div className="card bg-dark" key={id}>
+                  <div id="card" >
+                    <div className="card bg-dark" >
                       <img
                         src={
                           poster_path ? `${img_300}/${poster_path}` : unavailable

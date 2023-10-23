@@ -65,8 +65,8 @@ const TV = () => {
                   // query: { seriesId: Val.id },
                
                    className="col-md-3 col-sm-4 py-3">
-                  <div id="card" key={id}>
-                    <div className="card bg-dark" key={id}>
+                  <div id="card" >
+                    <div className="card bg-dark" >
                       <img
                         src={
                           poster_path ? `${img_300}/${poster_path}` : unavailable

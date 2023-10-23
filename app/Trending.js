@@ -42,7 +42,7 @@ const Trending = () => {
             return (
               <>
                 <div
-                  key={id}
+                  key={Val.id}
                   className="col-md-3 col-sm-4 py-3 d-flex justify-content-center g-4"
 
                 >

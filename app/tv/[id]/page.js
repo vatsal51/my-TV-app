@@ -45,8 +45,18 @@ console.log("data",tvSeries)
           <div className="col-12 text-center mt-2 mb-4 fs-1 fw-bold text-decoration-underline text-white">
             TV Series seasons and episodes
           </div>
-      <h1 className='text-white'>{tvSeries.name}</h1>
+      <h1 className='text-white'>{tvSeries.name}
+      </h1>
+      <img style={{ maxWidth: "300px" }} src={"https://image.tmdb.org/t/p/w300/"+tvSeries.poster_path} />
+      <h5 className='text-primary'>genre:
+      <i className='text-white'>
+      {tvSeries.genres.map((val)=>
+      <> ({val.name}) </> 
+      )}
+      </i>
+      </h5>
       <i className='text-white'>{tvSeries.tagline}</i>
+      <p className='text-white'>Overview: {tvSeries.overview} </p>
       {/* Render TV series details */}
       <h2 className='text-white'>Seasons</h2>
   <p className='text-white'>{tvSeries.number_of_seasons}</p>
