@@ -6,7 +6,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
       `https://api.themoviedb.org/3/genre/${type}/list?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US`
     );
     const { genres } = await data.json();
-    console.log(genres);
+   
     setGenre(genres);
   };
 

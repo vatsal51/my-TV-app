@@ -1,7 +1,8 @@
 // pages/[id]/index.js
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useRouter,usePathname } from 'next/navigation';
+import { useSearchParams } from 'next/navigation'
+
 import Header from "../../Header";
 import Footer from "../../Footer";
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -12,7 +13,11 @@ const TvSeriesDetails = () => {
   // const router = useRouter();
   //  const { pathname } = router.asPath;
   // const id = pathname.split('/').pop();
-  const id = usePathname().split('/').pop();
+  // const id = usePathname().split('/').pop();
+  const searchParams = useSearchParams()
+ 
+  const id = searchParams.get('id')
+  console.log("id is",id)
   // router = router.split('/')[2]
   const [tvSeries, setTvSeries] = useState(null);
 const fetchTvSeriesDetails = async () => {

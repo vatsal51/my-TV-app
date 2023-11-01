@@ -28,13 +28,19 @@ body {
   border-radius: 34px;
   color: #fff !important;
 }
+.card-title{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 .card:hover {
   background-color: #fff !important;
   color: black !important;
 }
 .card-img-top {
   height: 400px;
-  border-radius: 34px;
+  border-radius: 34px !important;
+  overflow: hidden;
 }
 .button,
 .buttons {
@@ -70,14 +76,14 @@ a:hover {
   .header1 {
     display: none;
   }
-  #card {
+  /* #card {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto ;
     justify-content: center;
     width: 45%;
     padding: 0;
     margin-left: 3%;
-  }
+  } */
   .card {
     margin: 0 3%;
     height: 100%;
@@ -85,6 +91,7 @@ a:hover {
   .card-img-top {
     height: 70%;
     width: 100%;
+    object-fit: cover;
   }
   .card-title {
     font-size: 18px !important;
@@ -98,6 +105,9 @@ a:hover {
   }
   .footer1 {
     font-size: 14px;
+  }
+  .footer .btn.active{
+    background-color: #fff;
   }
 }
 

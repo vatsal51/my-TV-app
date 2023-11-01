@@ -7,14 +7,14 @@ import React from 'react'
         } else {
           setPage(page);
         }
-        console.log(page)
+       
       };
     
       const Next = () => {
         // if (page < 10) {
           setPage(page + 1);
         // }
-        console.log(page)
+        
       };
     
   return (

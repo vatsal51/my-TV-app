@@ -61,7 +61,7 @@ const TV = () => {
 
             return (
               <>
-                <Link href={`/tv/${Val.id}`} as={`/tv/${Val.id}`} key={Val.id}
+                <Link href={`/tv/tvdetails?id=${Val.id}`} as={`/tv/tvdetails?id=${Val.id}`} key={Val.id}
                   // query: { seriesId: Val.id },
                
                    className="col-md-3 col-sm-4 py-3">
@@ -76,7 +76,7 @@ const TV = () => {
                       />
                       <div className="card-body">
                         <h5 className="card-title text-center fs-5">
-                          {title || name} / {vote_average} <i class="bi bi-star-fill"></i>
+                          {title || name} / {vote_average} <i className="bi bi-star-fill"></i>
 
                         </h5>
                         <div className="d-flex fs-6 align-items-center justify-content-evenly movie">

@@ -27,7 +27,7 @@ https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266
     // https://api.themoviedb.org/3/discover/tv?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
     const dataJ = await data.json();
     setState(dataJ.results);
-    console.log(dataJ)
+   
   };
   useEffect(() => {
     fetchTrending();
@@ -78,7 +78,7 @@ https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266
                       />
                       <div className="card-body">
                         <h5 className="card-title text-center fs-5">
-                          {title || name} / {vote_average} <i class="bi bi-star-fill"></i>
+                          {title || name} / {vote_average} <i className="bi bi-star-fill"></i>
 
                         </h5>
                         <div className="d-flex fs-6 align-items-center justify-content-evenly movie">

@@ -17,7 +17,7 @@ const Trending = () => {
   useEffect(() => {
     fetchTrending(); //calling the fetchTrending function only during the initial rendering of the app.
   }, [page]);
-  console.log(state)
+  
   return (
     <>
       <div className="container">
@@ -38,7 +38,7 @@ const Trending = () => {
               vote_average,
               id,
             } = Val;
-            console.log(Val.media_type)
+          
             return (
               <>
                 <div
@@ -57,7 +57,7 @@ const Trending = () => {
                     />
                     <div className="card-body">
                       <h5 className="card-title text-center fs-5">
-                        {title || name} / {parseFloat(vote_average).toFixed(1)} <i class="bi bi-star-fill"></i>
+                        {title || name} / {parseFloat(vote_average).toFixed(1)} <i className="bi bi-star-fill"></i>
                       </h5>
                       <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
                         <div>{media_type === "tv" ? "TV" : "Movie"}</div>

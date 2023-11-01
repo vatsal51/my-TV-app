@@ -76,7 +76,7 @@ const Search = () => {
                                             />
                                             <div className="card-body">
                                                 <h5 className="card-title text-center fs-5">
-                                                    {title || name} / {vote_average ? parseFloat(vote_average).toFixed(1) : "No Rating"} <i class="bi bi-star-fill"></i>
+                                                    {title || name} / {vote_average ? parseFloat(vote_average).toFixed(1) : "No Rating"} <i className="bi bi-star-fill"></i>
                                                 </h5>
                                                 <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
                                                     <div>{media_type === "tv" ? "TV" : "Movie"}</div>
