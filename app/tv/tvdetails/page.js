@@ -47,7 +47,7 @@ const TvSeriesDetails = () => {
           <div className="col-12 text-center mt-2 mb-4 fs-1 fw-bold text-decoration-underline text-white">
             TV Series seasons and episodes
           </div>
-          <h1 className="text-white">{tvSeries.name}</h1>
+          <h1 className="text-white">{tvSeries.name} </h1> <span className="text-white">(Rating: {tvSeries.vote_average} <i className="bi bi-star-fill"></i>)</span> 
           <img
             style={{ maxWidth: "300px" }}
             src={"https://image.tmdb.org/t/p/w300/" + tvSeries.poster_path}

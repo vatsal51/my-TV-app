@@ -2,8 +2,7 @@
 import {useState} from "react"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import Header from './Header';
-import Footer from './Footer';
+import Search from "./search/page";
 import Trending from './Trending';
 import Movie from "./movies/page";
 import TV from "./tv/page";
