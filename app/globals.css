@@ -27,6 +27,7 @@ body {
 .card {
   border-radius: 34px;
   color: #fff !important;
+  transition: all 0.3s ease-in-out;
 }
 .card-title{
   text-overflow: ellipsis;

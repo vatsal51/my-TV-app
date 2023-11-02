@@ -1,8 +1,10 @@
+"use client"
 import {React,useState} from "react";
 import Link from "next/link";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.css';
-const Footer = ({ navstate, setNavstate }) => {
+const Footer = () => {
+  const [navstate,setNavstate] = useState(1)
 console.log("navstate",navstate)
   const data = [
     {
