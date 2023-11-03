@@ -7,10 +7,12 @@ import Trending from "./Trending";
 import Movie from "./movies/page";
 import TV from "./tv/page";
 export default function Home() {
-  const [navstate, setNavstate] = useState(1);
+  // const [navstate, setNavstate] = useState(1);
   let contentComponent;
 
-  switch (navstate) {
+  switch (null) {
+    case 1:
+      contentComponent = <Trending />;
     case 2:
       contentComponent = <Movie />;
       break;

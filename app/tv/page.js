@@ -56,40 +56,36 @@ const TV = () => {
             } = Val;
 
             return (
-              <>
-                <Link
-                  href={`/tv/tvdetails?id=${Val.id}`}
-                  as={`/tv/tvdetails?id=${Val.id}`}
-                  key={Val.id}
-                  // query: { seriesId: Val.id },
+              <Link
+                href={`/tv/tvdetails?id=${Val.id}`}
+                as={`/tv/tvdetails?id=${Val.id}`}
+                key={Val.id}
+                // query: { seriesId: Val.id },
 
-                  className="col-md-3 col-sm-4 py-3"
-                >
-                  <div id="card">
-                    <div className="card bg-dark">
-                      <img
-                        src={
-                          poster_path
-                            ? `${img_300}/${poster_path}`
-                            : unavailable
-                        }
-                        className="card-img-top pt-3 pb-0 px-3"
-                        alt={title || name}
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title text-center fs-5">
-                          {title || name} / {vote_average}{" "}
-                          <i className="bi bi-star-fill"></i>
-                        </h5>
-                        <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
-                          <div>{media_type === "movie" ? "Movie" : "TV"}</div>
-                          <div>{first_air_date || release_date}</div>
-                        </div>
+                className="col-md-3 col-sm-4 py-3"
+              >
+                <div id="card">
+                  <div className="card bg-dark">
+                    <img
+                      src={
+                        poster_path ? `${img_300}/${poster_path}` : unavailable
+                      }
+                      className="card-img-top pt-3 pb-0 px-3"
+                      alt={title || name}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title text-center fs-5">
+                        {title || name} / {vote_average}{" "}
+                        <i className="bi bi-star-fill"></i>
+                      </h5>
+                      <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
+                        <div>{media_type === "movie" ? "Movie" : "TV"}</div>
+                        <div>{first_air_date || release_date}</div>
                       </div>
                     </div>
                   </div>
-                </Link>
-              </>
+                </div>
+              </Link>
             );
           })}
           <Pagination page={page} setPage={setPage} />

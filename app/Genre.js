@@ -6,7 +6,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
       `https://api.themoviedb.org/3/genre/${type}/list?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US`
     );
     const { genres } = await data.json();
-   
+
     setGenre(genres);
   };
 
@@ -16,7 +16,6 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
 
   //Adding a particular genre to the selected array
   const CategoryAdd = (genres) => {
-    
     setValue([...value, genres]);
     //removing those genres from the non selected array that have been added to the selected array.
     setGenre(genre.filter((g) => g.id !== genres.id));
@@ -55,16 +54,14 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
               genre.map((Gen) => {
                 const { id, name } = Gen;
                 return (
-                  <>
-                    <div className="m-2" key={id}>
-                      <button
-                        className="bg-dark text-white px-4 py-2 text-center button"
-                        onClick={() => CategoryAdd(Gen)}
-                      >
-                        {name}
-                      </button>
-                    </div>
-                  </>
+                  <div className="m-2" key={id}>
+                    <button
+                      className="bg-dark text-white px-4 py-2 text-center button"
+                      onClick={() => CategoryAdd(Gen)}
+                    >
+                      {name}
+                    </button>
+                  </div>
                 );
               })}
           </div>
