@@ -19,11 +19,13 @@ const Movie = () => {
   const fetchTrending = async () => {
     const data = await fetch(`
       
+    https://api.themoviedb.org/3/discover/movie?api_key=6b99f46cc249aa0e4664f52a5c266bb4&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreURL}`);
 
-https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}&with_genres=${genreURL}`);
+// https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}&with_genres=${genreURL}`);
     // https://api.themoviedb.org/3/discover/tv?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
     const dataJ = await data.json();
     setState(dataJ.results);
+ 
   };
   useEffect(() => {
     fetchTrending();
@@ -40,7 +42,7 @@ https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266
             genre={genre}
             setGenre={setGenre}
             setPage={setPage}
-            type="tv"
+            type="movie"
             value={value}
             setValue={setValue}
           />
@@ -81,7 +83,7 @@ https://api.themoviedb.org/3/movie/popular?api_key=6b99f46cc249aa0e4664f52a5c266
                         <i className="bi bi-star-fill"></i>
                       </h5>
                       <div className="d-flex fs-6 align-items-center justify-content-evenly movie">
-                        <div>{media_type === "movie" ? "Movie" : "TV"}</div>
+                        <div>Movie</div>
                         <div>{first_air_date || release_date}</div>
                       </div>
                     </div>

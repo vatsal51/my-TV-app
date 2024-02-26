@@ -38,7 +38,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
                 const { id, name } = Val;
                 return (
                   <>
-                    <div className="m-2" key={Val.id}>
+                    <div className="m-2" key={name}>
                       <button
                         className=" text-white px-4 py-2 text-center buttons"
                         onClick={() => CategoryRemove(Val)}

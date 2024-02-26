@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { img_300, unavailable } from "../app/config";
@@ -7,7 +8,7 @@ const Trending = () => {
   const [page, setPage] = useState(1); // initializing the page variable with value as 1 // page no: 1
   const fetchTrending = async () => {
     const data = await fetch(`
-  https://api.themoviedb.org/3/trending/all/day?api_key=6b99f46cc249aa0e4664f52a5c266bb4`);
+  https://api.themoviedb.org/3/trending/all/day?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}`);
     // https://api.themoviedb.org/3/tv/top_rated?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}`);
     const dataJ = await data.json(); // fetching data from API in JSON Format
     setState(dataJ.results); //storing that data in the state
@@ -43,8 +44,9 @@ const Trending = () => {
             return (
               <div
                 key={Val.id}
-                className="col-md-3 col-sm-4 py-3 d-flex justify-content-center g-4"
+                className="col-md-3 col-sm-4 py-3 justify-content-center g-4"
               >
+                <div id="card">
                 <div className="card bg-dark">
                   <img
                     src={
@@ -63,6 +65,7 @@ const Trending = () => {
                       <div>{first_air_date || release_date}</div>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             );
