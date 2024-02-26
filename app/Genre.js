@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
   const fetchGenre = async () => {
     const data = await fetch(
@@ -14,15 +13,12 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
     fetchGenre();
   }, []);
 
-  //Adding a particular genre to the selected array
   const CategoryAdd = (genres) => {
     setValue([...value, genres]);
-    //removing those genres from the non selected array that have been added to the selected array.
     setGenre(genre.filter((g) => g.id !== genres.id));
     setPage(1);
   };
 
-  //removing a perticular genre from the selected array
   const CategoryRemove = (genres) => {
     setValue(value.filter((g) => g.id !== genres.id));
     setGenre([...genre, genres]);
@@ -33,7 +29,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
       <div className="container-fluid">
         <div className="row mb-3">
           <div className="col-12 d-flex flex-wrap">
-            {value && //if value exist
+            {value &&
               value.map((Val) => {
                 const { id, name } = Val;
                 return (
@@ -50,7 +46,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
                 );
               })}
 
-            {genre && //if genre exist
+            {genre &&
               genre.map((Gen) => {
                 const { id, name } = Gen;
                 return (

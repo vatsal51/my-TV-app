@@ -20,7 +20,7 @@ const Search = () => {
 
   useEffect(() => {
     fetchSearch();
-  }, []);
+  }, [searchText]);
 
   const Search = () => {
     fetchSearch();
@@ -63,12 +63,15 @@ const Search = () => {
                 <>
                   <div className="col-md-3 col-sm-4 py-3" id="card" key={id}>
                     <div className="card bg-dark" key={id}>
-                      <img
+                      <Image
+                        width={500}
+                        height={500}
                         src={
                           poster_path
                             ? `${img_300}/${poster_path}`
                             : unavailable
                         }
+                        alt={title}
                         className="card-img-top pt-3 pb-0 px-3"
                       />
                       <div className="card-body">

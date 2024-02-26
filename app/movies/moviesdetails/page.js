@@ -14,7 +14,7 @@ const TvSeriesDetails = () => {
   const fetchTvSeriesDetails = async () => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US&append_to_response=credits`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US&append_to_response=credits`
       );
       const data = await response.json();
       setTvSeries(data);
