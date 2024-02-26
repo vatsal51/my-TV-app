@@ -1,7 +1,6 @@
 // pages/[id]/index.js
 "use client";
 import { motion } from "framer-motion";
-
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import "bootstrap-icons/font/bootstrap-icons.css";

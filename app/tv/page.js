@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -77,12 +78,14 @@ const TV = () => {
                   >
                     <div id="card">
                       <div className="card bg-dark">
-                        <img
+                        <Image
                           src={
                             poster_path
                               ? `${img_300}/${poster_path}`
                               : unavailable
                           }
+                          width={500}
+                          height={500}
                           className="card-img-top pt-3 pb-0 px-3"
                           alt={title || name}
                         />

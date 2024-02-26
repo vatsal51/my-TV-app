@@ -1,4 +1,6 @@
 "use client";
+import { motion } from "framer-motion";
+import Image from 'next/image'
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { img_300, unavailable } from "../app/config";
@@ -20,6 +22,15 @@ const Trending = () => {
 
   return (
     <>
+    <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.3,
+          delay: 0,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+      >
       <div className="container">
         <div className="row py-5 my-5">
           <div className="col-12 mt-2 mb-4 fs-1 fw-bold text-decoration-underline head d-flex justify-content-center align-items-center">
@@ -48,10 +59,12 @@ const Trending = () => {
               >
                 <div id="card">
                 <div className="card bg-dark">
-                  <img
+                  <Image
                     src={
                       poster_path ? `${img_300}/${poster_path}` : unavailable
                     }
+                    width={500}
+                    height={500}
                     className="card-img-top pt-3 pb-0 px-3"
                     alt={title}
                   />
@@ -73,6 +86,7 @@ const Trending = () => {
           <Pagination page={page} setPage={setPage} />
         </div>
       </div>
+      </motion.div>
     </>
   );
 };
