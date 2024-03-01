@@ -22,7 +22,6 @@ const TV = () => {
     const dataJ = await data.json();
     setState(dataJ.results);
     localStorage.setItem("TvData", JSON.stringify(dataJ.results));
-    console.log("tv");
   };
   useEffect(() => {
     const storedData = localStorage.getItem("TvData");
@@ -49,7 +48,7 @@ const TV = () => {
             setValue={setValue}
           />
           <div className="card-container row">
-            <CardLayout state={state} href="/tv/tvdetails" />
+            <CardLayout state={state} href="/details" type="tv" />
           </div>
           <Pagination page={page} setPage={setPage} />
         </div>

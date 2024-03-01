@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { img_300, unavailable } from "../app/config";
 import Link from "next/link";
-function CardLayout({ state, href }) {
+const  CardLayout = ({ state, href, type }) => {
   return (
     <>
       {state.map((Val) => {
@@ -31,14 +31,15 @@ function CardLayout({ state, href }) {
             className="col-md-3 col-sm-4 py-3 justify-content-center g-4"
           >
             <Link
-              href={href ? `${href}?id=${Val.id}` : "/"}
-              as={href ? `${href}?id=${Val.id}` : "/"}
+              href={href ? `${href}?type=${type}&id=${Val.id}` : "/"}
+              as={href ? `${href}?type=${type}&id=${Val.id}` : "/"}
               key={id}
               className="col-md-3 col-sm-4 py-3"
             >
               <div id="card">
                 <div className="card bg-dark">
-                  <Image
+                  <Image 
+                    priority={false}
                     src={
                       poster_path ? `${img_300}/${poster_path}` : unavailable
                     }

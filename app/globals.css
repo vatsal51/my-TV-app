@@ -46,6 +46,7 @@ body {
 .card:hover {
   background-color: #fff !important;
   color: black !important;
+  opacity: 0.75;
 }
 
 .card-img-top.open {
@@ -96,9 +97,6 @@ body {
   color: grey;
   font-size: 20px;
   padding: 0 2%;
-}
-a:hover {
-  color: white;
 }
 
 .thumbnail {

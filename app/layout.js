@@ -1,5 +1,6 @@
 "use client";
 import "./globals.css";
+import Head from 'next/head';
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
@@ -15,10 +16,14 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   const router = usePathname();
-  console.log("router", router);
 
   return (
     <html lang="en">
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Head>
+
       <body className={styles.className}>
         <Header />
         {children}
