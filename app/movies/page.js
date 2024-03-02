@@ -26,12 +26,12 @@ const Movie = () => {
     localStorage.setItem("MoviesData", JSON.stringify(dataJ.results));
   };
   useEffect(() => {
-    const storedData = localStorage.getItem("MoviesData");
-    if (storedData) {
-      setState(JSON.parse(storedData));
-    } else {
-      fetchMovies();
-    }
+    // const storedData = localStorage.getItem("MoviesData");
+    // if (storedData) {
+    // setState(JSON.parse(storedData));
+    // } else {
+    fetchMovies();
+    // }
   }, [page, genreURL]);
 
   return (

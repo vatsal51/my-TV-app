@@ -65,6 +65,9 @@ body {
   gap: 10px;
   justify-content: flex-start;
 }
+.casts-card {
+  max-width: 200px;
+}
 
 .genre span {
   border: 1px solid white;

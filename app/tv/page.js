@@ -25,13 +25,12 @@ const TV = () => {
   };
   useEffect(() => {
     const storedData = localStorage.getItem("TvData");
-    if (storedData) {
-      setState(JSON.parse(storedData));
-    } else {
-      fetchTvSeries();
-    }
+    // if (storedData) {
+    //   setState(JSON.parse(storedData));
+    // } else {
+    fetchTvSeries();
+    // }
   }, [page, genreURL]);
-
   return (
     <>
       <div className="container">

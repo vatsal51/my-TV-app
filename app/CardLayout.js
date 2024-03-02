@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { img_300, unavailable } from "../app/config";
 import Link from "next/link";
-const  CardLayout = ({ state, href, type }) => {
+const CardLayout = ({ state, href, type }) => {
   return (
     <>
       {state.map((Val) => {
@@ -31,14 +31,14 @@ const  CardLayout = ({ state, href, type }) => {
             className="col-md-3 col-sm-4 py-3 justify-content-center g-4"
           >
             <Link
-              href={href ? `${href}?type=${type}&id=${Val.id}` : "/"}
-              as={href ? `${href}?type=${type}&id=${Val.id}` : "/"}
+              href={href ? `${href}?type=${type}&id=${Val.id}` : ""}
+              as={href ? `${href}?type=${type}&id=${Val.id}` : ""}
               key={id}
               className="col-md-3 col-sm-4 py-3"
             >
               <div id="card">
                 <div className="card bg-dark">
-                  <Image 
+                  <Image
                     priority={false}
                     src={
                       poster_path ? `${img_300}/${poster_path}` : unavailable
@@ -66,6 +66,6 @@ const  CardLayout = ({ state, href, type }) => {
       })}
     </>
   );
-}
+};
 
 export default CardLayout;

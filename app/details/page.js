@@ -2,6 +2,9 @@
 // https://api.themoviedb.org/3/person/{person_id}/movie_credits - to get movies related to particular cast
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { unavailable } from "../config";
+
 import React, { useEffect, useState, memo } from "react";
 import { useSearchParams } from "next/navigation";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -12,27 +15,31 @@ const Details = () => {
   const type = searchParams.get("type");
   const id = searchParams.get("id");
   const [tvSeries, setTvSeries] = useState(null);
-
   useEffect(() => {
     const storedId = localStorage.getItem("prevId");
     const storedType = localStorage.getItem("prevType");
-    if (id && id === storedId && type === storedType) {
-      const storedData = localStorage.getItem(`data_${id}_${type}`);
-      if (storedData) {
-        setTvSeries(JSON.parse(storedData));
-        return;
-      }
-    }
+    // if (id && id === storedId && type === storedType) {
+    //   const storedData = localStorage.getItem(`details_${id}_${type}`);
+    //   if (storedData) {
+    //     setTvSeries(JSON.parse(storedData));
+    //     return;
+    //   }
+    // }
     const fetchTvSeriesDetails = async () => {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/${type}/${id}?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US&append_to_response=credits`
         );
         const data = await response.json();
+        if (!response.ok) {
+          console.error("Error fetching TV series details:", response.status);
+          return;
+        }
         setTvSeries(data);
+
         localStorage.setItem("prevId", id);
         localStorage.setItem("prevType", type);
-        localStorage.setItem(`data_${id}_${type}`, JSON.stringify(data));
+        // localStorage.setItem(`details_${id}_${type}`, JSON.stringify(data));
       } catch (error) {
         console.error("Error fetching TV series details:", error);
       }
@@ -41,8 +48,21 @@ const Details = () => {
     fetchTvSeriesDetails();
   }, [id, type]);
 
+
   if (!tvSeries) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          color: "white",
+        }}
+      >
+        NO DATA AVAILABLE
+      </div>
+    );
   }
 
   return (
@@ -68,23 +88,28 @@ const Details = () => {
                     width={300}
                     height={450}
                     src={
-                      "https://image.tmdb.org/t/p/w300/" + tvSeries.poster_path
+                      tvSeries?.poster_path !== null &&
+                      tvSeries?.poster_path !== undefined
+                        ? `https://image.tmdb.org/t/p/w300/${tvSeries?.poster_path}`
+                        : unavailable
                     }
                     className="movie-poster"
                     id="movie-poster"
-                    alt={tvSeries.title}
+                    alt={tvSeries?.title}
                   />
                 </div>
                 <div className="card-details-right">
-                  <h1 className="text-white">{tvSeries.title}</h1>
-                  <p className="text-white">{tvSeries.tagline}</p>
+                  <h1 className="text-white">
+                    {tvSeries?.title ? tvSeries?.title : tvSeries.original_name}
+                  </h1>
+                  <p className="text-white">{tvSeries?.tagline}</p>
                   <p className="text-white rating">
-                    (Rating: {tvSeries.vote_average}
+                    (Rating: {tvSeries?.vote_average}
                     <i className="bi bi-star-fill"></i>)
                   </p>
                   <h5 className="text-primary genre">
                     Genre:&nbsp;&nbsp;
-                    {tvSeries.genres.map((val, i) => {
+                    {tvSeries?.genres?.map((val, i) => {
                       return (
                         <span className="text-white" key={i}>
                           {val.name}
@@ -92,28 +117,36 @@ const Details = () => {
                       );
                     })}
                   </h5>
-                  <p className="text-white">Overview: {tvSeries.overview} </p>
+                  <p className="text-white">Overview: {tvSeries?.overview} </p>
                 </div>
               </div>
             </div>
             <h3 className="text-white my-3">Casts</h3>
             <div className="casts">
-              {tvSeries.credits.cast.map((el, i) => (
-                <div key={i}>
-                  <Image
-                    width={300}
-                    height={450}
-                    src={
-                      el.profile_path !== null
-                        ? `https://image.tmdb.org/t/p/w300/${el.profile_path}`
-                        : "https://placehold.co/100x150"
-                    }
-                    alt={`${el.name} profile`}
-                  />
-                  <p className="text-white">
-                    {el.name}({el.character})
-                  </p>
-                </div>
+              {tvSeries?.credits?.cast?.map((el, i) => (
+                <Link
+                  key={i}
+                  href={`/credit-details?type=${type}&id=${el.id}`}
+                  as={`/credit-details?type=${type}&id=${el.id}`}
+                  className="col-md-3 col-sm-4 py-3 casts-card"
+                >
+                  <div>
+                    <Image
+                      width={200}
+                      height={300}
+                      src={
+                        el.profile_path !== null
+                          ? `https://image.tmdb.org/t/p/w300/${el.profile_path}`
+                          : unavailable
+                      }
+                      alt={`${el.name} profile`}
+                    />
+                    <p className="text-white">
+                      {el.name}
+                      {el.character ? `(${el.character})` : ""}
+                    </p>
+                  </div>
+                </Link>
               ))}
             </div>
           </motion.div>

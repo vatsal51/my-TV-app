@@ -17,12 +17,12 @@ const Trending = () => {
   };
 
   useEffect(() => {
-    const storedData = localStorage.getItem("trendingData");
-    if (storedData) {
-      setState(JSON.parse(storedData));
-    } else {
+    // const storedData = localStorage.getItem("trendingData");
+    // if (storedData) {
+      // setState(JSON.parse(storedData));
+    // } else {
       fetchTrending();
-    }
+    // }
   }, [page]);
 
   return (
