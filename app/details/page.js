@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { unavailable } from "../config";
+import { img_300, unavailable, loading } from "../config";
 
 import React, { useEffect, useState, memo } from "react";
 import { useSearchParams } from "next/navigation";
@@ -48,7 +48,6 @@ const Details = () => {
     fetchTvSeriesDetails();
   }, [id, type]);
 
-
   if (!tvSeries) {
     return (
       <div
@@ -90,9 +89,11 @@ const Details = () => {
                     src={
                       tvSeries?.poster_path !== null &&
                       tvSeries?.poster_path !== undefined
-                        ? `https://image.tmdb.org/t/p/w300/${tvSeries?.poster_path}`
+                        ? `${img_300}/${tvSeries?.poster_path}`
                         : unavailable
                     }
+                    placeholder="blur"
+                    blurDataURL={loading}
                     className="movie-poster"
                     id="movie-poster"
                     alt={tvSeries?.title}
@@ -136,9 +137,11 @@ const Details = () => {
                       height={300}
                       src={
                         el.profile_path !== null
-                          ? `https://image.tmdb.org/t/p/w300/${el.profile_path}`
+                          ? `${img_300}/${el.profile_path}`
                           : unavailable
                       }
+                      placeholder="blur"
+                      blurDataURL={loading}
                       alt={`${el.name} profile`}
                     />
                     <p className="text-white">

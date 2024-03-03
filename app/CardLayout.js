@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { img_300, unavailable } from "../app/config";
+import { img_300, unavailable, loading } from "../app/config";
 import Link from "next/link";
 
 const CardLayout = ({ state, href, type }) => {
@@ -44,6 +44,8 @@ const CardLayout = ({ state, href, type }) => {
                     src={
                       poster_path ? `${img_300}/${poster_path}` : unavailable
                     }
+                    placeholder="blur"
+                    blurDataURL={loading}
                     width={500}
                     height={500}
                     className="card-img-top pt-3 pb-0 px-3"

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Pagination from "../pagination";
-import { img_300, unavailable } from "../config";
+import { img_300, unavailable, loading } from "../config";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
@@ -72,6 +72,8 @@ const Search = () => {
                             ? `${img_300}/${poster_path}`
                             : unavailable
                         }
+                        placeholder="blur"
+                        blurDataURL={loading}
                         alt={title}
                         className="card-img-top pt-3 pb-0 px-3"
                       />

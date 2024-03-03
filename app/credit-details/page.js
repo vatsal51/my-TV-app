@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { unavailable } from "../config";
+import { img_300, unavailable, loading } from "../config";
 import { useSearchParams } from "next/navigation";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -70,7 +70,6 @@ const CreditDetail = () => {
     fetchTvSeriesDetails();
   }, [id, type]);
 
-
   // if (!tvSeries.movieCredits || !tvSeries.personDetails) {
   //   return <div>Loading...</div>;
   // }
@@ -94,10 +93,9 @@ const CreditDetail = () => {
                   <Image
                     width={300}
                     height={450}
-                    src={
-                      "https://image.tmdb.org/t/p/w300/" +
-                      tvSeries?.personDetails?.profile_path
-                    }
+                    src={`${img_300}/${tvSeries?.personDetails?.profile_path}`}
+                    placeholder="blur"
+                    blurDataURL={loading}
                     className="movie-poster"
                     id="movie-poster"
                     alt={`Poster for ${tvSeries?.personDetails?.name}`}
@@ -129,9 +127,11 @@ const CreditDetail = () => {
                       height={300}
                       src={
                         el.poster_path !== null
-                          ? `https://image.tmdb.org/t/p/w300/${el.poster_path}`
+                          ? `${img_300}/${el.poster_path}`
                           : unavailable
                       }
+                      placeholder="blur"
+                      blurDataURL={loading}
                       alt={`${el.original_title} profile`}
                     />
                     <p className="text-white">
