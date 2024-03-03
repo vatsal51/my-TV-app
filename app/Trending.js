@@ -19,12 +19,11 @@ const Trending = () => {
   useEffect(() => {
     // const storedData = localStorage.getItem("trendingData");
     // if (storedData) {
-      // setState(JSON.parse(storedData));
+    // setState(JSON.parse(storedData));
     // } else {
-      fetchTrending();
+    fetchTrending();
     // }
   }, [page]);
-
   return (
     <>
       <div className="container">
@@ -36,7 +35,7 @@ const Trending = () => {
             </h4>
             <i className="bi bi-fire mx-4 text-danger"></i>
           </div>
-          <CardLayout state={state} />
+          <CardLayout state={state}  href="/details"/>
           <Pagination page={page} setPage={setPage} />
         </div>
       </div>

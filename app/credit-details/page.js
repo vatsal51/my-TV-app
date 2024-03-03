@@ -100,7 +100,7 @@ const CreditDetail = () => {
                     }
                     className="movie-poster"
                     id="movie-poster"
-                    alt="image not available"
+                    alt={`Poster for ${tvSeries?.personDetails?.name}`}
                   />
                 </div>
                 <div className="card-details-right">

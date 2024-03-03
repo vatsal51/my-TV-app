@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { img_300, unavailable } from "../app/config";
 import Link from "next/link";
+
 const CardLayout = ({ state, href, type }) => {
   return (
     <>
@@ -17,7 +18,7 @@ const CardLayout = ({ state, href, type }) => {
           vote_average,
           id,
         } = Val;
-
+        const cardType = type ? type : media_type;
         return (
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
@@ -31,8 +32,8 @@ const CardLayout = ({ state, href, type }) => {
             className="col-md-3 col-sm-4 py-3 justify-content-center g-4"
           >
             <Link
-              href={href ? `${href}?type=${type}&id=${Val.id}` : ""}
-              as={href ? `${href}?type=${type}&id=${Val.id}` : ""}
+              href={href ? `${href}?type=${cardType}&id=${Val.id}` : ""}
+              as={href ? `${href}?type=${cardType}&id=${Val.id}` : ""}
               key={id}
               className="col-md-3 col-sm-4 py-3"
             >
