@@ -24,6 +24,9 @@ body {
 #fire {
   font-size: 20px;
 }
+.card-container a {
+  text-decoration: none;
+}
 .card {
   border-radius: 34px;
   color: #fff !important;
@@ -88,6 +91,7 @@ body {
   border: none !important;
 }
 .button:hover,
+.button.selected,
 .buttons {
   background-color: darkblue !important;
 }

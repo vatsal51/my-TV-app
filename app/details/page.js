@@ -16,15 +16,6 @@ const Details = () => {
   const id = searchParams.get("id");
   const [tvSeries, setTvSeries] = useState(null);
   useEffect(() => {
-    const storedId = localStorage.getItem("prevId");
-    const storedType = localStorage.getItem("prevType");
-    // if (id && id === storedId && type === storedType) {
-    //   const storedData = localStorage.getItem(`details_${id}_${type}`);
-    //   if (storedData) {
-    //     setTvSeries(JSON.parse(storedData));
-    //     return;
-    //   }
-    // }
     const fetchTvSeriesDetails = async () => {
       try {
         const response = await fetch(
@@ -39,7 +30,6 @@ const Details = () => {
 
         localStorage.setItem("prevId", id);
         localStorage.setItem("prevType", type);
-        // localStorage.setItem(`details_${id}_${type}`, JSON.stringify(data));
       } catch (error) {
         console.error("Error fetching TV series details:", error);
       }

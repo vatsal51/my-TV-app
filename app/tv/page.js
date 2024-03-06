@@ -5,7 +5,6 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Pagination from "../pagination";
 import Genre from "../Genre";
-import useGenre from "../useGenre";
 import CardLayout from "../CardLayout";
 
 const TV = () => {
@@ -13,11 +12,15 @@ const TV = () => {
   const [page, setPage] = useState(1);
   const [genre, setGenre] = useState([]);
   const [value, setValue] = useState([]);
-  const genreURL = useGenre(value);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const updateSelectedGenres = (newSelectedGenres) => {
+    setSelectedGenres(newSelectedGenres);
+  };
+  const genreIds = selectedGenres.map((g) => g.id).join(",");
 
   const fetchTvSeries = async () => {
     const data = await fetch(`
-    https://api.themoviedb.org/3/discover/tv?api_key=6b99f46cc249aa0e4664f52a5c266bb4&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreURL}`);
+    https://api.themoviedb.org/3/discover/tv?api_key=6b99f46cc249aa0e4664f52a5c266bb4&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreIds}`);
     // https://api.themoviedb.org/3/discover/tv?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
     const dataJ = await data.json();
     setState(dataJ.results);
@@ -25,12 +28,8 @@ const TV = () => {
   };
   useEffect(() => {
     const storedData = localStorage.getItem("TvData");
-    // if (storedData) {
-    //   setState(JSON.parse(storedData));
-    // } else {
     fetchTvSeries();
-    // }
-  }, [page, genreURL]);
+  }, [page, genreIds]);
   return (
     <>
       <div className="container">
@@ -39,12 +38,12 @@ const TV = () => {
             TV Series
           </div>
           <Genre
-            genre={genre}
+            genres={genre}
             setGenre={setGenre}
             setPage={setPage}
             type="tv"
-            value={value}
-            setValue={setValue}
+            selectedGenres={selectedGenres}
+            updateSelectedGenres={updateSelectedGenres}
           />
           <div className="card-container row">
             <CardLayout state={state} href="/details" type="tv" />
