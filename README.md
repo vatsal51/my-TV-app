@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+---
 
-## Getting Started
+# Movie Explorer
 
-First, run the development server:
+Movie Explorer is a web application that allows users to discover trending movies, browse movies and TV series, and search for specific titles. It leverages the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) to fetch movie and TV show data.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Trending Movies**: View trending movies on the home page.
+- **Browse Movies and TV Series**: Explore a vast collection of movies and TV series categorized by genres.
+- **Search**: Search for specific movies or TV series by title.
+- **Pagination**: Navigate through multiple pages of search results and browse sections.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **React**: Frontend library for building user interfaces.
+- **Next.js**: React framework for server-rendered applications.
+- **Bootstrap**: Frontend CSS framework for responsive design.
+- **The Movie Database (TMDb) API**: Source of movie and TV show data.
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    git clone https://github.com/vatsal51/my-TV-app.git
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Navigate to the project directory:
 
-## Deploy on Vercel
+    ```bash
+    cd movie-explorer
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Install dependencies:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    ```bash
+    npm install
+    ```
+
+4. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+5. Open your browser and navigate to `http://localhost:3000` to view the application.
+
+## Deployment
+
+To deploy the application, you can use platforms like Vercel, Netlify, or AWS Amplify, which support Next.js applications out of the box.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
