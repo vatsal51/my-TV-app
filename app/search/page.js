@@ -13,7 +13,7 @@ const Search = () => {
 
   const fetchSearch = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US&query=${searchText}&page=${page}&include_adult=false`
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&query=${searchText}&page=${page}&include_adult=false`
     );
     const { results } = await data.json();
     setContent(results);

@@ -24,10 +24,10 @@ const CreditDetail = () => {
         const [movieCreditsResponse, personDetailsResponse] = await Promise.all(
           [
             fetch(
-              `https://api.themoviedb.org/3/person/${id}/${type}_credits?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US&append_to_response=credits`
+              `https://api.themoviedb.org/3/person/${id}/${type}_credits?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&append_to_response=credits`
             ),
             fetch(
-              `https://api.themoviedb.org/3/person/${id}?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US`
+              `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
             ),
           ]
         );

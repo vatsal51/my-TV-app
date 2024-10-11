@@ -1,5 +1,5 @@
 // Movie.js
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -22,7 +22,7 @@ const Movie = () => {
   const fetchMovies = async () => {
     try {
       const data = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=6b99f46cc249aa0e4664f52a5c266bb4&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreIds}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreIds}`
       );
 
       const dataJ = await data.json();
@@ -50,7 +50,7 @@ const Movie = () => {
             setPage={setPage}
             type="movie"
             selectedGenres={selectedGenres}
-            updateSelectedGenres={updateSelectedGenres} 
+            updateSelectedGenres={updateSelectedGenres}
           />
           <CardLayout state={state} href="/details" type="movie" />
           <Pagination page={page} setPage={setPage} />

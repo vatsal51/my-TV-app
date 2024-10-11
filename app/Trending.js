@@ -4,13 +4,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import Pagination from "./pagination";
 import CardLayout from "./CardLayout";
 
+
 const Trending = () => {
+  
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
   const fetchTrending = async () => {
     const data = await fetch(`
-  https://api.themoviedb.org/3/trending/all/day?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}`);
-    // https://api.themoviedb.org/3/tv/top_rated?api_key=6b99f46cc249aa0e4664f52a5c266bb4&page=${page}`);
+  https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&page=${page}`);
+    // https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&page=${page}`);
     const dataJ = await data.json();
     setState(dataJ.results);
     localStorage.setItem("trendingData", JSON.stringify(dataJ.results));
@@ -19,6 +21,7 @@ const Trending = () => {
   useEffect(() => {
     fetchTrending();
   }, [page]);
+
   return (
     <>
       <div className="container">
@@ -30,7 +33,7 @@ const Trending = () => {
             </h4>
             <i className="bi bi-fire mx-4 text-danger"></i>
           </div>
-          <CardLayout state={state}  href="/details"/>
+          <CardLayout state={state} href="/details" />
           <Pagination page={page} setPage={setPage} />
         </div>
       </div>

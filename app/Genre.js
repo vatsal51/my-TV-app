@@ -7,7 +7,7 @@ const Genre = ({ genres, setGenre, setPage, type, updateSelectedGenres }) => {
     const fetchGenres = async () => {
       try {
         const data = await fetch(
-          `https://api.themoviedb.org/3/genre/${type}/list?api_key=6b99f46cc249aa0e4664f52a5c266bb4&language=en-US`
+          `https://api.themoviedb.org/3/genre/${type}/list?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
         );
         const { genres: fetchedGenres } = await data.json();
         setGenre(fetchedGenres);
