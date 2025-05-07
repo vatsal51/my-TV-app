@@ -12,7 +12,6 @@ const Trending = () => {
   const fetchTrending = async () => {
     const data = await fetch(`
   https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&page=${page}`);
-    // https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&page=${page}`);
     const dataJ = await data.json();
     setState(dataJ.results);
     localStorage.setItem("trendingData", JSON.stringify(dataJ.results));

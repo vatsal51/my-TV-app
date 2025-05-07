@@ -7,7 +7,7 @@ import Link from "next/link";
 const CardLayout = ({ state, href, type }) => {
   return (
     <>
-      {state.map((Val) => {
+      {state?.map((Val) => {
         const {
           name,
           title,
