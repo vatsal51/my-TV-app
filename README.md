@@ -29,7 +29,7 @@ Movie Explorer is a web application that allows users to discover trending movie
 2. Navigate to the project directory:
 
     ```bash
-    cd movie-explorer
+    cd my-TV-app
     ```
 
 3. Install dependencies:
