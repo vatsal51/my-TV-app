@@ -44,8 +44,6 @@ const CardLayout = ({ state, href, type }) => {
                     src={
                       poster_path ? `${img_300}/${poster_path}` : unavailable
                     }
-                    placeholder="blur"
-                    blurDataURL={loading}
                     width={500}
                     height={500}
                     className="card-img-top pt-3 pb-0 px-3"

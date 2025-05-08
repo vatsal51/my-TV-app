@@ -75,8 +75,6 @@ const Search = () => {
                       src={
                         poster_path ? `${img_300}/${poster_path}` : unavailable
                       }
-                      placeholder="blur"
-                      blurDataURL={loading}
                       alt={title}
                       className="card-img-top pt-3 pb-0 px-3"
                     />
