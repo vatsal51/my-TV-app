@@ -24,7 +24,7 @@ const Search = () => {
     if (!debouncedSearchText.trim()) return;
 
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&query=${debouncedSearchText}&page=${page}&include_adult=false`
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&query=${debouncedSearchText}&page=${page}&include_adult=false`,
     );
     const { results } = await data.json();
     setContent(results);
@@ -73,14 +73,16 @@ const Search = () => {
                       width={500}
                       height={500}
                       src={
-                        poster_path ? `${img_300}/${poster_path}` : unavailable
+                        poster_path
+                          ? `${img_300}/${poster_path}`
+                          : `${unavailable}?text=${title || name}`
                       }
-                      alt={title}
+                      alt={title || name}
                       className="card-img-top pt-3 pb-0 px-3"
                     />
                     <div className="card-body">
                       <h5 className="card-title text-center fs-5">
-                        {title || name} /{" "}
+                        {title || name} /
                         {vote_average
                           ? parseFloat(vote_average).toFixed(1)
                           : "No Rating"}{" "}
