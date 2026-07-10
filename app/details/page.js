@@ -29,7 +29,7 @@ const Details = () => {
     const fetchDetails = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&append_to_response=credits`
+          `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&append_to_response=credits`,
         );
 
         if (!response.ok) {
@@ -84,7 +84,11 @@ const Details = () => {
                 <Image
                   width={300}
                   height={450}
-                  src={poster_path ? `${img_300}/${poster_path}` : unavailable}
+                  src={
+                    poster_path
+                      ? `${img_300}/${poster_path}`
+                      : `${unavailable}?text=${title || original_name}`
+                  }
                   className="movie-poster"
                   alt={title || original_name}
                 />
@@ -118,7 +122,7 @@ const Details = () => {
                   <Link
                     key={el.id}
                     href={`/credit-details?type=${type}&id=${el.id}`}
-                    className="col-md-3 col-sm-4 py-3 casts-card"
+                    className="col-md-3 col-sm-4 py-3 casts-card text-decoration-none"
                   >
                     <div>
                       <Image
@@ -127,7 +131,7 @@ const Details = () => {
                         src={
                           el.profile_path
                             ? `${img_300}/${el.profile_path}`
-                            : unavailable
+                            : `${unavailable}?text=${el.name}`
                         }
                         alt={`${el.name} profile`}
                       />

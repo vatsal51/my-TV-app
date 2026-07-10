@@ -35,7 +35,7 @@ const CardLayout = ({ state, href, type }) => {
               href={href ? `${href}?type=${cardType}&id=${Val.id}` : ""}
               as={href ? `${href}?type=${cardType}&id=${Val.id}` : ""}
               key={id}
-              className="col-md-3 col-sm-4 py-3"
+              className="col-md-3 col-sm-4 py-3 text-decoration-none"
             >
               <div id="card">
                 <div className="card bg-dark">
