@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -11,14 +10,12 @@ const data = [
 ];
 
 const Footer = ({ pathname }) => {
-  const [activeButton, setActiveButton] = useState(1);
-
-  useEffect(() => {
-    const matchingId = data.find((item) => item.link === pathname)?.id;
-    if (matchingId) {
-      setActiveButton(matchingId);
-    }
-  }, [pathname]);
+  const normalizedPath = pathname?.replace(/\/$/, "") || "/";
+  const activeButton =
+    data.find((item) => {
+      const itemPath = item.link === "/" ? "/" : item.link.replace(/\/$/, "");
+      return itemPath === normalizedPath;
+    })?.id ?? 1;
 
   return (
     <div className="container-fluid">

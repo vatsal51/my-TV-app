@@ -1,63 +1,34 @@
-// Movie.js
-"use client";
-import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
-import Pagination from "../pagination";
 import Genre from "../Genre";
-import CardLayout from "../CardLayout";
 
-const Movie = () => {
-  const [state, setState] = useState([]);
-  const [page, setPage] = useState(1);
-  const [genre, setGenre] = useState([]);
-  const [selectedGenres, setSelectedGenres] = useState([]);
+async function getMovies(page = 1) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}`,
+    {
+      next: { revalidate: 60 },
+    },
+  );
 
-  const genreIds = selectedGenres.map((g) => g.id).join(",");
+  if (!response.ok) {
+    throw new Error("Failed to fetch movies");
+  }
 
-  const updateSelectedGenres = (newSelectedGenres) => {
-    setSelectedGenres(newSelectedGenres);
-  };
+  const data = await response.json();
+  return data.results || [];
+}
 
-  const fetchMovies = async () => {
-    try {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&page=${page}&with_genres=${genreIds}`
-      );
-
-      const dataJ = await data.json();
-      setState(dataJ.results);
-      // localStorage.setItem("MoviesData", JSON.stringify(dataJ.results));
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchMovies();
-  }, [page, genreIds]);
+export default async function MoviePage() {
+  const movies = await getMovies(1);
 
   return (
-    <>
-      <div className="container">
-        <div className="row py-5 my-5">
-          <div className="col-12 text-center mt-2 mb-4 fs-1 fw-bold text-decoration-underline text-white">
-            Movies
-          </div>
-          <Genre
-            genres={genre}
-            setGenre={setGenre}
-            setPage={setPage}
-            type="movie"
-            selectedGenres={selectedGenres}
-            updateSelectedGenres={updateSelectedGenres}
-          />
-          <CardLayout state={state} href="/details" type="movie" />
-          <Pagination page={page} setPage={setPage} />
+    <div className="container">
+      <div className="row py-5 my-5">
+        <div className="col-12 text-center mt-2 mb-4 fs-1 fw-bold text-decoration-underline text-white">
+          Movies
         </div>
+        <Genre type="movie" initialItems={movies} href="/details" />
       </div>
-    </>
+    </div>
   );
-};
-
-export default Movie;
+}
