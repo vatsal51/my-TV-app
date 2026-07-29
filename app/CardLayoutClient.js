@@ -3,7 +3,6 @@
 import React, { memo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { img_300, unavailable } from "./config";
 
 const CardLayoutClient = ({ state, href, type }) => {
@@ -33,9 +32,8 @@ const CardLayoutClient = ({ state, href, type }) => {
             key={Val.id}
             className="col-md-3 col-sm-4 py-3 justify-content-center g-4"
           >
-            <Link
+            <a
               href={href ? `${href}?type=${cardType}&id=${Val.id}` : ""}
-              as={href ? `${href}?type=${cardType}&id=${Val.id}` : ""}
               key={id}
               className="col-md-3 col-sm-4 py-3 text-decoration-none"
             >
@@ -64,7 +62,7 @@ const CardLayoutClient = ({ state, href, type }) => {
                   </div>
                 </div>
               </div>
-            </Link>
+            </a>
           </motion.div>
         );
       })}

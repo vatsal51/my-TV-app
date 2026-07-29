@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect } from "react";
 import { img_300, unavailable } from "../config";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -70,9 +69,8 @@ export default function CreditDetailClient({ tvSeries, type }) {
           <h3 className="text-white my-3">Movies Credits</h3>
           <div className="casts">
             {tvSeries?.movieCredits?.cast.map((el, i) => (
-              <Link
+              <a
                 href={`/details?type=${type}&id=${el.id}`}
-                as={`/details?type=${type}&id=${el.id}`}
                 key={i}
                 className="col-md-3 col-sm-4 py-3 casts-card text-decoration-none"
               >
@@ -92,7 +90,7 @@ export default function CreditDetailClient({ tvSeries, type }) {
                     {el.character ? ` (${el.character})` : ""}
                   </p>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         </motion.div>

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect } from "react";
 import { img_300, unavailable } from "../config";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -94,7 +93,7 @@ export default function DetailsClient({ tvSeries, type }) {
               <h3 className="text-white my-3">Casts</h3>
               <div className="casts">
                 {credits.cast.map((el) => (
-                  <Link
+                  <a
                     key={el.id}
                     href={`/credit-details?type=${type}&id=${el.id}`}
                     className="col-md-3 col-sm-4 py-3 casts-card text-decoration-none"
@@ -114,7 +113,7 @@ export default function DetailsClient({ tvSeries, type }) {
                         {el.name} {el.character && `(${el.character})`}
                       </p>
                     </div>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </>

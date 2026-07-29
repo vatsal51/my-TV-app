@@ -35,6 +35,6 @@ async function getTrending(page = 1) {
 
 export default async function TrendingPage() {
   const trending = await getTrending(1);
-
+  console.log("second");
   return <TrendingClient initialItems={trending} />;
 }

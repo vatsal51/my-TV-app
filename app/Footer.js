@@ -1,4 +1,3 @@
-import Link from "next/link";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -22,18 +21,18 @@ const Footer = ({ pathname }) => {
       <div className="row">
         <div className="col-12 text-center bg-dark footer">
           {data.map((Val) => (
-            <Link href={Val.link} prefetch={true} key={Val.id}>
-              <button
-                id={Val.id}
-                className={`col-sm-2 col-md-2 btn btn-dark nav-button ${
-                  Val.id === activeButton ? "active" : ""
-                }`}
-              >
-                <i className={`${Val.icon}`} id="fire"></i>
-                <br />
-                <h5 className="pt-1 fs-6">{Val.name}</h5>
-              </button>
-            </Link>
+            <a
+              href={Val.link}
+              key={Val.id}
+              id={Val.id}
+              className={`col-sm-2 col-md-2 btn btn-dark nav-button ${
+                Val.id === activeButton ? "active" : ""
+              }`}
+            >
+              <i className={`${Val.icon}`} id="fire"></i>
+              <br />
+              <h5 className="pt-1 fs-6">{Val.name}</h5>
+            </a>
           ))}
         </div>
       </div>
