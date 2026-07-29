@@ -12,6 +12,7 @@ async function getTrending(page = 1) {
   }
 
   try {
+    console.log("first");
     const response = await fetch(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}&page=${page}`,
       {
@@ -31,7 +32,7 @@ async function getTrending(page = 1) {
     return [];
   }
 }
-console.log("first");
+
 export default async function TrendingPage() {
   const trending = await getTrending(1);
 

@@ -9,7 +9,7 @@ import { img_300, unavailable } from "./config";
 const CardLayoutClient = ({ state, href, type }) => {
   return (
     <>
-      {state?.map((Val) => {
+      {state?.map((Val, index) => {
         const {
           name,
           title,
@@ -42,7 +42,8 @@ const CardLayoutClient = ({ state, href, type }) => {
               <div id="card">
                 <div className="card bg-dark">
                   <Image
-                    priority={false}
+                    priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
                     src={
                       poster_path ? `${img_300}/${poster_path}` : unavailable
                     }
