@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import TrendingClient from "./TrendingClient";
 
+export const revalidate = 300;
+
 async function getTrending(page = 1) {
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
@@ -13,7 +15,7 @@ async function getTrending(page = 1) {
     const response = await fetch(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}&page=${page}`,
       {
-        next: { revalidate: 60 },
+        next: { revalidate: 300 },
       },
     );
 
@@ -29,7 +31,7 @@ async function getTrending(page = 1) {
     return [];
   }
 }
-
+console.log("first");
 export default async function TrendingPage() {
   const trending = await getTrending(1);
 

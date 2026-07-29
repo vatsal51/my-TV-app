@@ -4,14 +4,24 @@ import React, { useEffect, useMemo, useState } from "react";
 import CardLayout from "./CardLayout";
 import Pagination from "./pagination";
 
-const Genre = ({ type, initialItems = [], href = "/details" }) => {
-  const [genres, setGenres] = useState([]);
+const Genre = ({
+  type,
+  initialItems = [],
+  initialGenres = [],
+  href = "/details",
+}) => {
+  const [genres, setGenres] = useState(initialGenres);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(initialItems);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    if (initialGenres?.length) {
+      setGenres(initialGenres);
+      return;
+    }
+
     const fetchGenres = async () => {
       try {
         const data = await fetch(
@@ -25,7 +35,7 @@ const Genre = ({ type, initialItems = [], href = "/details" }) => {
     };
 
     fetchGenres();
-  }, [type]);
+  }, [type, initialGenres]);
 
   useEffect(() => {
     if (page === 1 && !selectedGenres.length && initialItems?.length) {
@@ -124,7 +134,27 @@ const Genre = ({ type, initialItems = [], href = "/details" }) => {
       </div>
 
       {isLoading ? (
-        <div className="text-white text-center my-3">Loading...</div>
+        <div className="card-container row">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div className="col-md-3 col-sm-4 py-3" key={index}>
+              <div className="card bg-dark" style={{ height: 420 }}>
+                <div
+                  className="bg-secondary placeholder"
+                  style={{ height: 280, margin: 16, borderRadius: 8 }}
+                />
+                <div className="card-body">
+                  <div className="placeholder-glow">
+                    <span className="placeholder col-8 me-2" />
+                    <span className="placeholder col-4" />
+                  </div>
+                  <div className="placeholder-glow mt-2">
+                    <span className="placeholder col-6" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : filteredItems?.length > 0 ? (
         <div className="card-container row">
           <CardLayout state={filteredItems} href={href} type={type} />

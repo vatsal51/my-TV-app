@@ -75,7 +75,27 @@ export default function TrendingClient({ initialItems = [] }) {
           <i className="bi bi-fire mx-4 text-danger"></i>
         </div>
         {loading ? (
-          <div className="text-white text-center my-3">Loading...</div>
+          <div className="card-container row">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div className="col-md-3 col-sm-4 py-3" key={index}>
+                <div className="card bg-dark" style={{ height: 420 }}>
+                  <div
+                    className="bg-secondary placeholder"
+                    style={{ height: 280, margin: 16, borderRadius: 8 }}
+                  />
+                  <div className="card-body">
+                    <div className="placeholder-glow">
+                      <span className="placeholder col-8 me-2" />
+                      <span className="placeholder col-4" />
+                    </div>
+                    <div className="placeholder-glow mt-2">
+                      <span className="placeholder col-6" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         ) : (
           <CardLayout state={trending} href="/details" />
         )}

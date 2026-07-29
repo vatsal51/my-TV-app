@@ -1,10 +1,11 @@
 "use client";
+
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Pagination from "../pagination";
-import { img_300, unavailable, loading } from "../config";
+import { img_300, unavailable } from "../config";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
@@ -27,7 +28,7 @@ const Search = () => {
       `https://api.themoviedb.org/3/search/multi?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&query=${debouncedSearchText}&page=${page}&include_adult=false`,
     );
     const { results } = await data.json();
-    setContent(results);
+    setContent(results || []);
   };
 
   // Trigger API when debouncedSearchText or page changes
